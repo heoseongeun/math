@@ -8,6 +8,8 @@ import java.math.BigInteger;
  *   r' = b % r
  *   ... 반복하다 나머지가 0이 되었을 때의 나누는 수가 GCD
  *
+ *   a > b 조건은 반복하다보면 자동으로 만족됨
+ *
  *   Ex) 1071과 1029의 GCD : 21
  *    1071 % 1029 = 42
  *    1029 % 42 = 21
@@ -25,21 +27,11 @@ public class GCD {
 
     // 재귀 사용
     int gcdRecursive(int a, int b) {
-        if(a < b) { // a > b 조건 만족시키기
-            int temp = a;
-            a = b;
-            b = temp;
-        }
         return b == 0 ? a : gcdRecursive(b, a % b);
     }
 
     // 반복문 사용
     int gcdRepetition(int a, int b) {
-        if(a < b) { // a > b 조건 만족시키기
-            int temp = a;
-            a = b;
-            b = temp;
-        }
         while(b > 0) {
             int temp = a;
             a = b;
