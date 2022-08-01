@@ -6,7 +6,7 @@ public class Permutation {
      * [1, 2, 3] 이라는 3개의 크기를 가진 배열에서 2개의 순열 구하기
      */
     public static void main(String[] args) {
-        ArrayList<int[]> permutation = perm(new ArrayList<int[]>(), new int[]{1,2,3}, new int[3], new boolean[3], 0);
+        ArrayList<int[]> permutation = perm(new ArrayList<int[]>(), new int[]{1, 2, 3}, new int[2], new boolean[3], 0);
     }
 
     /**
