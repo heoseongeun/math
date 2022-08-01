@@ -3,16 +3,14 @@ import java.util.ArrayList;
 public class Permutation {
     /**
      * n개의 크기를 가진 배열 중에서 r개의 순열 구하기
-     *
-     * <visited 배열 이용>
-     * DFS 떠올리기
+     * [1, 2, 3] 이라는 3개의 크기를 가진 배열에서 2개의 순열 구하기
      */
     public static void main(String[] args) {
         ArrayList<int[]> permutation = perm(new ArrayList<int[]>(), new int[]{1,2,3}, new int[3], new boolean[3], 0);
     }
 
     /**
-     * [1, 2, 3] 이라는 3개의 크기를 가진 배열에서 2개의 순열 구하기
+     * <visited 배열 이용>
      * - result : 순열 저장할 ArrayList
      *  ex) [1, 2], [1, 3], ...
      * - arr : [1, 2, 3] 처럼 n개의 크기를 가진 배열
@@ -21,9 +19,9 @@ public class Permutation {
      *  ([false, false, false]가 초기화 값)
      * - depth : output의 크기가 r이 되었을 때 return 해주기 위한 변수
      * - n : arr 배열의 크기와 동일
-     *  (34번 째 줄에서 arr.length로 대체)
+     *  (33번 째 줄에서 arr.length로 대체)
      * - r : output 배열의 크기와 동일
-     *  (20번 째 줄에서 output.length로 대체)
+     *  (28번 째 줄에서 output.length로 대체)
      */
     static ArrayList<int[]> perm(ArrayList<int[]> result, int[] arr, int[] output, boolean[] visited, int depth) {
         // output의 크기가 r개가 되면 result에 넣기
@@ -100,7 +98,7 @@ public class Permutation {
         for (int i = 0; i < arr.length; i++) {
             // output 배열의 depth번 째 요소에 arr배열의 i번째 요소 넣기
             output[depth] = arr[i];
-            // depth를 1 늘려서 재귀 호출
+            // depth를 늘려서 재귀 호출
             result = perm(result, arr, output, visited, depth + 1);
         }
 
