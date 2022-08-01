@@ -37,11 +37,11 @@ public class Permutation {
             if (!visited[i]) {
                 // output에 넣었던 값이라고 표시하기위해 visitied를 true로 설정
                 visited[i] = true;
-                // output에 arr 배열 값 넣기
+                // output 배열의 depth번 째 요소에 arr배열의 i번째 요소 넣기
                 output[depth] = arr[i];
                 // output 배열에 r개의 수가 채워질 때까지 재귀 호출
                 result = perm(result, arr, output, visited, depth + 1);
-                // output 배열에 넣었던 값의 visited를 false로 되돌리기
+                // output 배열에 넣었던 값의 visited를 false로 다시 되돌려 놓기
                 visited[i] = false;
             }
         }
@@ -57,12 +57,14 @@ public class Permutation {
      * [3, 2, 1], [3, 1, 2] 로 저장됨
      */
     static void permutation(int[] arr, int depth, int r) {
+        // depth가 r이 되면 print 메서드를 통해 출력
         if (depth == r) {
             print(arr, r);
             return;
         }
 
         for (int i = depth; i < arr.length; i++) {
+            // arr배열의 depth 번째 요소와 i번 쨰 요소 swap
             swap(arr, depth, i);
             // 다음 index를 swap하기 위해 재귀 호출
             permutation(arr, depth + 1, r);
@@ -82,5 +84,26 @@ public class Permutation {
         for (int i = 0; i < r; i++)
             System.out.print(arr[i] + " ");
         System.out.println();
+    }
+
+    /**
+     * <중복 순열>
+     * 순열과 달리 중복이 허용되므로 visited 배열이 불필요
+     */
+    static ArrayList<int[]> repetitionPermutation(ArrayList<int[]> result, int[] arr, int[] output, boolean[] visited, int depth) {
+        // output의 크기가 r개가 되면 result에 넣기
+        if (depth == output.length) {
+            result.add(output.clone());
+            return result;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            // output 배열의 depth번 째 요소에 arr배열의 i번째 요소 넣기
+            output[depth] = arr[i];
+            // depth를 1 늘려서 재귀 호출
+            result = perm(result, arr, output, visited, depth + 1);
+        }
+
+        return result;
     }
 }
